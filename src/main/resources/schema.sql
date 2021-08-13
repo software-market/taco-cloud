@@ -9,14 +9,14 @@ create table if not exists Ingredient (
     );
 
 create table if not exists Taco (
-                                    id identity,
-                                    name varchar(50) not null,
+    id identity,
+    name varchar(50) not null,
     created_at timestamp not null
     );
 
 create table if not exists Taco_Ingredients (
-                                                taco_id bigint not null,
-                                                ingredients_id varchar(4) not null
+    taco_id bigint not null,
+    ingredients_id varchar(4) not null
     );
 
 alter table Taco_Ingredients
@@ -25,8 +25,10 @@ alter table Taco_Ingredients
     add foreign key (ingredients_id) references Ingredient(id);
 
 create table if not exists Taco_Order (
-                                          id identity,
-                                          delivery_name varchar(50) not null,
+    id identity,
+    -- 增加了user表后 没给这个字段
+    user_id bigint not null,
+    delivery_name varchar(50) not null,
     delivery_street varchar(50) not null,
     delivery_city varchar(50) not null,
     delivery_state varchar(2) not null,
@@ -38,11 +40,24 @@ create table if not exists Taco_Order (
     );
 
 create table if not exists Taco_Order_Tacos (
-                                                order_id bigint not null,
-                                                taco_id bigint not null
+    order_id bigint not null,
+    taco_id bigint not null
 );
 
 alter table Taco_Order_Tacos
     add foreign key (order_id) references Taco_Order(id);
 alter table Taco_Order_Tacos
     add foreign key (taco_id) references Taco(id);
+
+-- 第4章没给这个sql
+create table if not exists user (
+    id identity,
+    username varchar(50) not null,
+    fullname varchar(50) not null,
+    password varchar(500) not null,
+    street varchar(50) not null,
+    city varchar(50) not null,
+    state varchar(2) not null,
+    zip varchar(10) not null,
+    phone_number varchar(50) not null
+    );

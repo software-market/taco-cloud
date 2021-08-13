@@ -28,6 +28,9 @@ public class Order {
 
     private Date placedAt;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany(targetEntity=Taco.class)
     private List<Taco> tacos = new ArrayList<>();
 

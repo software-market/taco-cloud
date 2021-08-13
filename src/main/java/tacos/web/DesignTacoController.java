@@ -50,7 +50,8 @@ public class DesignTacoController {
     @GetMapping
     public String showDesignForm(Model model) {
         List<Ingredient> ingredients = new ArrayList<>();
-        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+        final Iterable<Ingredient> all = ingredientRepo.findAll();
+        all.forEach(i -> ingredients.add(i));
         Type[] types = Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
