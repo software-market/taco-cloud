@@ -1,0 +1,42 @@
+server:
+  host: localhost
+  port: 8080
+#  ssl:
+#    # keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+#    key-store: classpath:mykeys.jks
+#    key-store-password: 123456
+#    key-password: 123456
+
+spring:
+  application:
+    name: taco cloud. by wula
+  datasource:
+    url: "jdbc:h2:mem:testdb"
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  thymeleaf:
+    cache: false
+  # 关闭自动生成，避免覆盖掉 ingredient 表的数据
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+#logging:
+#  path: /var/logs/
+#  file: TacoCloud.log 默认循环 10MB 大小
+#  level:
+#    root: WARN
+#    org:
+#      springframework.security: DEBUG
+
+logging:
+  level:
+    root: INFO
+
+#greeting:
+#  welcome: You are using ${spring.application.name}
+
+taco:
+  orders:
+    pageSize: 10
