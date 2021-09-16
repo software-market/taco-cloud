@@ -7,7 +7,14 @@ server:
 #    key-store-password: 123456
 #    key-password: 123456
 
+# export SPRING_PROFILES_ACTIVE=prod,audit,ha
+# java -jar taco-cloud.jar --spring.profiles.active=prod
 spring:
+  profiles:
+    active:
+      prod
+#      - audit
+#      - ha
   application:
     name: taco cloud. by wula
   datasource:
@@ -36,7 +43,3 @@ logging:
 
 #greeting:
 #  welcome: You are using ${spring.application.name}
-
-taco:
-  orders:
-    pageSize: 10
